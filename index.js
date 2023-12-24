@@ -11,7 +11,7 @@ const stripeRoute = require("./Routes/stripes");
 const cors = require("cors");
 
 dotenv.config()
-
+const PORT = process.env.PORT || 5000;
 mongoose.connect(process.env.MONGO_URL)
 .then(()=> console.log("DB Connection Successfull"))
 .catch((err)=> console.log(err));
@@ -27,6 +27,6 @@ app.use("/api/cart", cartRoute);
 app.use("/api/order", orderRoute);
 app.use("/api/checkout", stripeRoute);
 
-app.listen(5000, ()=>{
-    console.log("backend is running!!");
+app.listen(PORT, ()=>{
+    console.log(`app is listening on port : ${PORT}!!`);
 })
